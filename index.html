@@ -3,174 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <title>Document</title>
-    <style>
-        body{
-           margin: 0;
-           padding: 0; 
-        }
-        .container{
-            width: 400px;
-            height: 100vh;
-            
-            margin: 0 auto;
-            
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
-
-        }
-#left{
-   width: 50%;
-   height: 100vh;
-   background-image: url('door1.png');
-   float: left;
-  
-  
-}
-.left{
-   animation-name: left;
-   animation-duration: 4s;
-   animation-fill-mode: both;
-  
-}
-#right{
-    width: 50%;
-   height: 100vh;
-   background-image: url('door1.png');
-   float: left;
-   
-   
-   
-} 
-.right{
-    
-   
-   animation-name: right;
-   animation-duration: 4s;
-   animation-fill-mode: both;
-   
-} 
-.lclose{
-    animation-name: leftclose;
-   animation-duration: 4s;
-
-}
-.rclose{
-    animation-name: rightclose;
-    animation-duration: 4s;
-}
-#btn{
-    position: absolute;
-    top: 20px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    transition:opacity 4s ;
-    background-color:rgb(133,94,66);
-    border: 3px dashed;
-    
-}
-#btn p{
-    color: oldlace;
-    font-weight: bold;
-}
-.btn{
-    opacity:0;
-   
-}
-#close{
-    position: absolute; 
-    bottom: 0;
-    left: 40%;
-    opacity: 0;
-    transition: 2s;
-}
-
-
-@keyframes left{
-    0%{
-        transform: translateX(0px);
-    }
-    100%{
-        transform: translateX(-210px);
-    }
-}
-@keyframes right {
-    0%{
-        transform: translateX(0px);
-    }
-    100%{
-        transform:translateX(210px);
-    }
-    
-}
-@keyframes leftclose {
-    0%{
-        transform: translateX(-210px); 
-    }
-    100%{
-        transform: translateX(0px);
-    }
-}
-
-@keyframes rightclose {
-    0%{
-        transform: translateX(210px); 
-    }
-    100%{
-        transform: translateX(0px);
-    }
-}
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   
-   <div class="container">
-   
-    <audio id="audio" src="creaking-door.mp3"></audio>
-        <div class="txt position-absolute top-50" style="left:190px;z-index:-1">
-            <h1>hello world</h1>
 
-        </div>
-       <div id="left"></div>
-       <div id="right"></div>
-       <button id="btn" onclick="myfun()">
-      <p>click Me</p>
-      <p>For</p>
-      <p>Open</p>
-      <p>the Door</p>
-    </button>
-    <button id='close' onclick="closeDoor()" style="display:block;background:rgb(133,94,66);color:oldlace;border:none;padding: 10px;font-size:16px; font-weight:bold">Close the Door</button>
-      
-   
-    </div> 
-   
-   <script>
-     function myfun(){
-        document.getElementById("audio").play();
-        var btn =  document.getElementById('btn');
-         var btn2 = document.getElementById('close');
-         btn2.style.opacity='1';
-       // btn.classList.add('btn');
-       btn.style.opacity='0';
-         var lft = document.getElementById('left');
-         lft.classList.add('left');
-         var rgt = document.getElementById('right');
-         rgt.classList.add('right');
-     }
-     function closeDoor(){
-        document.getElementById("audio").play();
-         var btn =  document.getElementById('btn');
-         var btn2 = document.getElementById('close');
-         btn2.style.opacity='0';
-        // //btn.classList.add('btn');
-         btn.style.opacity='1';
-          var lft = document.getElementById('left');
-          lft.classList.add('lclose');
-          var rgt = document.getElementById('right');
-          rgt.classList.add('rclose');
-     }
-   </script>
+    <div class="container position-relative">
+        <audio id="doorsound" src="creaking-door.mp3"></audio>
+        <audio id="bsong" src="Happy-birthday-instrumental.mp3"></audio>
+      <div id="txt">
+          <h1>HaPpY</h1>
+          <h1>BiRtHDaY</h1>
+          <h1>To</h1>
+          <h1>YoU</h1>
+      </div>
+      <div id="img">
+          <img id="myimg" src="izhaan.png" alt="" class="w-50 rounded-circle">
+      </div>
+        
+
+       <div class="d-flex">
+        <div id="leftDoor"></div>
+        <div id="rightDoor"></div>
+       </div>
+
+       <button class="btn position-absolute" id="open" onclick="openDoor()">
+        <i class="fas fa-lock fa-lg fafa"></i>
+        <p class="lead text-warning">clickMe</p>
+       </button>
+
+       <button id="close"class="btn position-absolute bottom-0 start-50" onclick="closeDoor()">
+        <i class="fas fa-lock-open fafa"></i>  
+        <span class="text-warning">Click Me</span></button>
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>   
+    <script src="js.js"></script>
 </body>
 </html>
